@@ -1,0 +1,74 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  /* 10px = 1rem */
+  font-family: "Karla";
+}
+
+body {
+  min-height: 100vh;
+  background-color: #0B2434;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2B283A;
+}
+
+.app {
+  max-width: 320px;
+  border-radius: 10px;
+  background-color: #F5F5F5;
+  padding: 3.5rem;
+  text-align: center;
+}
+.app h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -3%;
+  color: #2B283A;
+  line-height: 30px;
+}
+.app .content {
+  font-family: "Inter";
+  font-size: 1.3rem;
+  line-height: 16px;
+  margin-bottom: 3rem;
+}
+.app .die {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(3.5rem, 1fr));
+  gap: 1.8rem;
+  margin-bottom: 2.5rem;
+}
+.app .die .items {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 24px;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2B283A;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+}
+.app .sbmt-btn {
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 19px;
+  color: #fff;
+  padding: 0.6rem 3rem;
+  border: none;
+  background-color: #5035FF;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+}
