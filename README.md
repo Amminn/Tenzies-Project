@@ -3,12 +3,15 @@
 This game is based on [Scrimba Course](https://scrimba.com/playlist/p5aNKh5 "scrimba"), I did practice and sharp my skills
 Using `props` and `useEffect` and many others to create this amazing game.
 
-You can test the game live [here](https://amminn.github.io/Tenzies-Project/ "here")
+Check Figma design [here](https://www.figma.com/file/FqsxRUhAaXM4ezddQK0CdR/Tenzies?node-id=0%3A1 "here").
+
+Test the game live [here](https://amminn.github.io/Tenzies-Project/ "here").
 
 ### About to work on some improvements:
-- Add Dice Dotes instead of numbers.
-- Add timer to save best timing.
-- ~~Add Click counter to save the less Click~~ note Good idea
+- Added Dice Dotes instead of numbers.
+- Added timer to save best timing.
+- ~~Add Click counter to save the less Click~~ Not Good idea
+- Add start and rest btns
 - Save the data inside Local Storage. *not yet*
 
 Feel free about **Contributing**.
