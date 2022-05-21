@@ -9,8 +9,18 @@ export default function Die(props) {
   return (
     <div 
       style={stylee}
-      className='items'
+      className={`dice value${props.value}`}
       onClick={() => {props.handleClick(props.id)}}
-    >{props.value}</div>
+    >
+      <div className="dote"></div>
+      <div className="dote"></div>
+      <div className="dote"></div>
+      <div className="dote"></div>
+      <div className="dote"></div>
+      <div className="dote"></div>
+      <div className="dote"></div>
+      <div className="dote"></div>
+      <div className="dote"></div>
+    </div>
   )
 }

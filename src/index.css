@@ -3,6 +3,8 @@
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 html {
@@ -81,6 +83,176 @@ body {
           box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
 }
 
+.app .die .dice {
+  border: 1px solid #0b243463;
+  border-radius: .4rem;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  padding: 0.3rem;
+  display: -ms-grid;
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-areas: "left-header middle-header right-header" "left-middle middle-middle right-middle" "left-bottom middle-bottom right-bottom";
+}
+
+.app .die .dice .dote {
+  margin: 0.15rem;
+  border-radius: 50%;
+}
+
+.app .die .dice.value1 > div:nth-of-type(5) {
+  background-color: #2B283A;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: middle-middle;
+}
+
+.app .die .dice.value2 > div:nth-of-type(3) {
+  background-color: #2B283A;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: right-header;
+}
+
+.app .die .dice.value2 > div:nth-of-type(7) {
+  background-color: #2B283A;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: left-bottom;
+}
+
+.app .die .dice.value3 > div:nth-of-type(3) {
+  background-color: #2B283A;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: right-header;
+}
+
+.app .die .dice.value3 > div:nth-of-type(5) {
+  background-color: #2B283A;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: middle-middle;
+}
+
+.app .die .dice.value3 > div:nth-of-type(7) {
+  background-color: #2B283A;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: left-bottom;
+}
+
+.app .die .dice.value4 > div:nth-of-type(1) {
+  background-color: #2B283A;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: left-header;
+}
+
+.app .die .dice.value4 > div:nth-of-type(3) {
+  background-color: #2B283A;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: right-header;
+}
+
+.app .die .dice.value4 > div:nth-of-type(7) {
+  background-color: #2B283A;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: left-bottom;
+}
+
+.app .die .dice.value4 > div:nth-of-type(9) {
+  background-color: #2B283A;
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: right-bottom;
+}
+
+.app .die .dice.value5 > div:nth-of-type(1) {
+  background-color: #2B283A;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: left-header;
+}
+
+.app .die .dice.value5 > div:nth-of-type(3) {
+  background-color: #2B283A;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: right-header;
+}
+
+.app .die .dice.value5 > div:nth-of-type(5) {
+  background-color: #2B283A;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: middle-middle;
+}
+
+.app .die .dice.value5 > div:nth-of-type(7) {
+  background-color: #2B283A;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: left-bottom;
+}
+
+.app .die .dice.value5 > div:nth-of-type(9) {
+  background-color: #2B283A;
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: right-bottom;
+}
+
+.app .die .dice.value6 > div:nth-of-type(1) {
+  background-color: #2B283A;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: left-header;
+}
+
+.app .die .dice.value6 > div:nth-of-type(3) {
+  background-color: #2B283A;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: right-header;
+}
+
+.app .die .dice.value6 > div:nth-of-type(4) {
+  background-color: #2B283A;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: left-middle;
+}
+
+.app .die .dice.value6 > div:nth-of-type(6) {
+  background-color: #2B283A;
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: right-middle;
+}
+
+.app .die .dice.value6 > div:nth-of-type(7) {
+  background-color: #2B283A;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: left-bottom;
+}
+
+.app .die .dice.value6 > div:nth-of-type(9) {
+  background-color: #2B283A;
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: right-bottom;
+}
+
 .app .sbmt-btn {
   font-weight: 700;
   font-size: 1.6rem;
@@ -93,5 +265,35 @@ body {
   cursor: pointer;
   -webkit-box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
           box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+}
+
+.timer {
+  margin: 0rem auto 1.5rem;
+  width: 70%;
+  border-radius: 0.7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 12%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.7rem 1rem;
+  background-color: white;
+  -webkit-box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+          box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+}
+
+.digits {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2.5rem;
+  color: #2B283A;
+}
+
+.mili-sec {
+  color: #2B283A;
 }
 /*# sourceMappingURL=index.css.map */

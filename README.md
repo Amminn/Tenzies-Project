@@ -6,9 +6,9 @@ Using `props` and `useEffect` and many others to create this amazing game.
 You can test the game live [here](https://amminn.github.io/Tenzies-Project/ "here")
 
 ### About to work on some improvements:
-- Add dice notes instead of numbers.
-- Add timer to save best time.
-- Add Click counter to save the less Click.
-- Save the data inside Local Storage.
+- Add Dice Dotes instead of numbers.
+- Add timer to save best timing.
+- ~~Add Click counter to save the less Click~~ note Good idea
+- Save the data inside Local Storage. *not yet*
 
 Feel free about **Contributing**.

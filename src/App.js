@@ -2,6 +2,7 @@ import React from "react"
 import { nanoid } from "nanoid"
 import Die from "./Die"
 import Confetti from 'react-confetti'
+import Timer from "./Timer"
 
 function App() {
 
@@ -39,14 +40,17 @@ function App() {
   })
 
   // whenever there is a change in the dice we will check if all elements are held and got same value.
+  // Pause And Start The Stopwatch, 
   React.useEffect(() => {
     const condition = dice.every(element => element.isHeld === true && element.value === dice[0].value)
-    condition ? setTenzies(true) : setTenzies(false)
+    condition ? (setTenzies(true), handlePauseResume()) : (setTenzies(false), handleStart())
   }, [dice])
 
   // When we click on the roll button it will check restarting all, or just change the not held dices
+  // If win reset the StopWatch
   function roll() {
     if (tenzies === true) {
+      handleReset()
       setDice(allNewDice())
     } else {
       setDice(prevValue => {
@@ -64,15 +68,55 @@ function App() {
     }))
   }
 
+  const [isActive, setIsActive] = React.useState(false);
+  const [isPaused, setIsPaused] = React.useState(true);
+  const [time, setTime] = React.useState(0);
+
+  React.useEffect(() => {
+    let interval = null;
+  
+    if (isActive && isPaused === false) {
+      interval = setInterval(() => {
+        setTime((time) => time + 10);
+      }, 10);
+    } else {
+      clearInterval(interval);
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isActive, isPaused]);
+    
+  const handleStart = () => {
+    setIsActive(true);
+    setIsPaused(false);
+  };
+  
+  const handlePauseResume = () => {
+    setIsPaused(!isPaused);
+  };
+  
+  const handleReset = () => {
+    setIsActive(false);
+    setTime(0);
+  }
+
   return (
     <main className="app">
+
     {tenzies && <Confetti />}
+
+    <div className="stop-watch">
+      <Timer time={time} />
+    </div>
+
       <h1>Tenzies</h1>
       <p className="content">
         Roll until all dice are the same. Click each die to freeze it at its current value between rolls.
       </p>
       <div className="die">
         {diceElements}
+      
       </div>
       <button 
         className="sbmt-btn"
