@@ -267,6 +267,21 @@ body {
           box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
 }
 
+.stop-watch {
+  position: relative;
+}
+
+.stop-watch .record {
+  color: #f72424;
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+  position: absolute;
+  top: 0;
+  right: 10%;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
 .timer {
   margin: 0rem auto 1.5rem;
   width: 70%;

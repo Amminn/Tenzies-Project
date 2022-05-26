@@ -8,7 +8,9 @@ function App() {
 
   // Holding the dices in this state
   const [dice, setDice] = React.useState(allNewDice())
-  const [tenzies, setTenzies] = React.useState(false)
+  const [tenzies, setTenzies] = React.useState(true)
+  const [bestTime, setBestTime] = React.useState(() => JSON.parse(localStorage.getItem('bestTimeStorage')))
+  const [isNewRecord, setIsNewRecord] = React.useState(false)
   
   // Returning 10 random dices
   function allNewDice() {
@@ -36,14 +38,26 @@ function App() {
       isHeld={die.isHeld}
       value={die.value}
       handleClick={holdDice}
+      startTimer={handleStart}
     />
   })
 
   // whenever there is a change in the dice we will check if all elements are held and got same value.
-  // Pause And Start The Stopwatch, 
+  // Pause / Start The Stopwatch, 
   React.useEffect(() => {
     const condition = dice.every(element => element.isHeld === true && element.value === dice[0].value)
-    condition ? (setTenzies(true), handlePauseResume()) : (setTenzies(false), handleStart())
+    condition ? (setTenzies(true), handlePauseResume()) : (setTenzies(false))
+    // if all is held and got same value &&
+    // and current time is smaller then the old best time or its first time playing
+    // save the current time, save new record in local Storage.
+    if (condition) {
+      if (currentTime < bestTime || bestTime === null) {
+        setBestTime(currentTime)
+        setIsNewRecord(!isNewRecord)
+        localStorage.removeItem('bestTimeStorage')
+        localStorage.setItem('bestTimeStorage', JSON.stringify(currentTime))
+      }
+    }
   }, [dice])
 
   // When we click on the roll button it will check restarting all, or just change the not held dices
@@ -52,6 +66,7 @@ function App() {
     if (tenzies === true) {
       handleReset()
       setDice(allNewDice())
+      setIsNewRecord(false)
     } else {
       setDice(prevValue => {
         return prevValue.map(item => !item.isHeld ? randomDice() : item)
@@ -68,37 +83,38 @@ function App() {
     }))
   }
 
-  const [isActive, setIsActive] = React.useState(false);
-  const [isPaused, setIsPaused] = React.useState(true);
-  const [time, setTime] = React.useState(0);
+  // StopWatch
+  const [isActive, setIsActive] = React.useState(false)
+  const [isPaused, setIsPaused] = React.useState(true)
+  const [currentTime, setCurrentTime] = React.useState(0)
 
   React.useEffect(() => {
-    let interval = null;
+    let interval = null
   
     if (isActive && isPaused === false) {
       interval = setInterval(() => {
-        setTime((time) => time + 10);
-      }, 10);
+        setCurrentTime((currentTime) => currentTime + 10)
+      }, 10)
     } else {
-      clearInterval(interval);
+      clearInterval(interval)
     }
     return () => {
-      clearInterval(interval);
-    };
-  }, [isActive, isPaused]);
+      clearInterval(interval)
+    }
+  }, [isActive, isPaused])
     
-  const handleStart = () => {
-    setIsActive(true);
-    setIsPaused(false);
-  };
-  
+  function handleStart() {
+    setIsActive(true)
+    setIsPaused(false)
+  }
+
   const handlePauseResume = () => {
-    setIsPaused(!isPaused);
-  };
-  
+    setIsPaused(!isPaused)
+  }
+
   const handleReset = () => {
-    setIsActive(false);
-    setTime(0);
+    setIsActive(false)
+    setCurrentTime(0)
   }
 
   return (
@@ -107,7 +123,8 @@ function App() {
     {tenzies && <Confetti />}
 
     <div className="stop-watch">
-      <Timer time={time} />
+      {isNewRecord && <p className="record">New Record</p>}
+      <Timer time={currentTime} />
     </div>
 
       <h1>Tenzies</h1>
@@ -116,13 +133,12 @@ function App() {
       </p>
       <div className="die">
         {diceElements}
-      
       </div>
       <button 
         className="sbmt-btn"
-        onClick={roll}
+        onClick={() => {roll(); handleStart()}}
       >
-        {!tenzies ? "Roll" : "New Game"}
+        {!tenzies ? "Roll" : "New Game / Rest"}
       </button>
     </main>
   )

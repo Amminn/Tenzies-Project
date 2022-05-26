@@ -10,8 +10,8 @@ Test the game live [here](https://amminn.github.io/Tenzies-Project/ "here").
 ### About to work on some improvements:
 - Added Dice Dotes instead of numbers.
 - Added timer to save best timing.
-- ~~Add Click counter to save the less Click~~ Not Good idea
-- Add start and rest btns
-- Save the data inside Local Storage. *not yet*
+- ~~Added Click counter to save the less Click~~ Not Good idea
+- ~~Added start and rest btns~~
+- ~~Save the data inside Local Storage.~~ Done
 
 Feel free about **Contributing**.

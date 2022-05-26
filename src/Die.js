@@ -10,7 +10,7 @@ export default function Die(props) {
     <div 
       style={stylee}
       className={`dice value${props.value}`}
-      onClick={() => {props.handleClick(props.id)}}
+      onClick={() => {props.handleClick(props.id); props.startTimer()}}
     >
       <div className="dote"></div>
       <div className="dote"></div>
