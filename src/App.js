@@ -11,7 +11,7 @@ function App() {
   const [tenzies, setTenzies] = React.useState(true)
   const [bestTime, setBestTime] = React.useState(() => JSON.parse(localStorage.getItem('bestTimeStorage')))
   const [isNewRecord, setIsNewRecord] = React.useState(false)
-  
+
   // Returning 10 random dices
   function allNewDice() {
     const newDice = []
@@ -42,8 +42,8 @@ function App() {
     />
   })
 
-  // whenever there is a change in the dice we will check if all elements are held and got same value.
-  // Pause / Start The Stopwatch, 
+  // Whenever there is a change in the dice we will check if all elements are held and got same value.
+  // Pause / Start The Stopwatch
   React.useEffect(() => {
     const condition = dice.every(element => element.isHeld === true && element.value === dice[0].value)
     condition ? (setTenzies(true), handlePauseResume()) : (setTenzies(false))
@@ -74,10 +74,15 @@ function App() {
     }
   }
 
-  // when we click on the of of the dices we will flip the background to held or no.
-  function holdDice(id) {
+  // When we click on the the dices we will flip the background to held or no.
+  // not allow the user to select other dice values who are different than the first value selection
+  function holdDice(id, value) {
+    let currentDiceValue = dice.find(item => item.isHeld === true)
+    currentDiceValue === undefined ? currentDiceValue = {value: value} : ''
     setDice(oldDice => oldDice.map(die => {
-      return die.id === id ? 
+      // check if the Dice you did just select have same value
+      // as the previews Dive value
+      return die.id === id && die.value === currentDiceValue.value ?
         {...die, isHeld: !die.isHeld} :
         die
     }))
@@ -90,7 +95,7 @@ function App() {
 
   React.useEffect(() => {
     let interval = null
-  
+
     if (isActive && isPaused === false) {
       interval = setInterval(() => {
         setCurrentTime((currentTime) => currentTime + 10)
@@ -102,7 +107,7 @@ function App() {
       clearInterval(interval)
     }
   }, [isActive, isPaused])
-    
+
   function handleStart() {
     setIsActive(true)
     setIsPaused(false)
@@ -134,7 +139,7 @@ function App() {
       <div className="die">
         {diceElements}
       </div>
-      <button 
+      <button
         className="sbmt-btn"
         onClick={() => {roll(); handleStart()}}
       >
