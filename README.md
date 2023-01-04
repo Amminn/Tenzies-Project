@@ -8,8 +8,8 @@ Check Figma design [here](https://www.figma.com/file/FqsxRUhAaXM4ezddQK0CdR/Tenz
 Test the game live [here](https://amminn.github.io/Tenzies-Project/ "here").
 
 ### About to work on some improvements:
-- ~~ Added Dice Dotes instead of numbers.~~  Done
-- ~~ Added timer to save best timing.~~  Done
+- ~~Added Dice Dotes instead of numbers.~~  Done
+- ~~Added timer to save best timing.~~  Done
 - ~~Added Click counter to save the less Click~~ Not Good idea
 - ~~Added start and rest btns~~
 - ~~Save the data inside Local Storage.~~ Done
